@@ -4,9 +4,10 @@ import Transport.FirmaTransport;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class FirmaRepository implements RepositoryInterface<FirmaTransport>{
-    List<FirmaTransport> firme = new ArrayList<>();
+    private static final Vector<FirmaTransport> firme = new Vector<FirmaTransport>();
 
     @Override
     public void add(FirmaTransport entity) {
@@ -15,21 +16,23 @@ public class FirmaRepository implements RepositoryInterface<FirmaTransport>{
 
     @Override
     public FirmaTransport get(int id) {
+
         return firme.get(id);
     }
 
     @Override
     public void update(int index,FirmaTransport entity) {
+
         firme.set(index,entity);
     }
 
     @Override
-    public void delete(FirmaTransport entity) {
-
+    public void delete(int index) {
+        firme.remove(index);
     }
 
     @Override
     public int getSize() {
-        return 1;
+        return firme.size();
     }
 }
