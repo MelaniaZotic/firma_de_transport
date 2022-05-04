@@ -25,7 +25,7 @@ public class TransportRepository implements RepositoryInterface<Transport> {
 
     @Override
     public void delete(int index) {
-        transporturi.remove(index)
+        transporturi.remove(index);
     }
 
     @Override
