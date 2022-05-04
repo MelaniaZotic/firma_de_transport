@@ -28,6 +28,7 @@ public class ColeteServices {
             throw  new InvalidDataException("tipColet invalid");
 
         if(cantitateColet <0 ) throw new InvalidDataException("Cantitate invalida!");
-
+        Colete newColet = new Colete(tipColet,cantitateColet);
+        coleteRepository.add(newColet);
     }
 }

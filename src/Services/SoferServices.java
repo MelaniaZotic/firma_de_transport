@@ -28,6 +28,7 @@ public class SoferServices {
 
     public void addNewSoferi(String nume, String prenume, String nrTelefon, Integer idSofer, Masina masina)throws InvalidDataException{
         if(idSofer == null) throw new InvalidDataException("id invalid");
-
+        Sofer newSofer = new Sofer(nume,prenume,nrTelefon,idSofer,masina);
+        soferRepository.add(newSofer);
     }
 }
