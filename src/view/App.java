@@ -1,6 +1,9 @@
 package view;
 
+import Repository.ColeteRepository;
+import Services.ColeteServices;
 import Services.FirmaServices;
+import Services.SoferServices;
 import Transport.Masina;
 import Transport.Sofer;
 import exceptions.InvalidDataException;
@@ -11,6 +14,8 @@ import java.util.Scanner;
 public class App {
     private Scanner s = new Scanner(System.in);
     private FirmaServices firmaServices = new FirmaServices();
+    private ColeteServices coleteServices = new ColeteServices();
+    private SoferServices soferServices  = new SoferServices();
 
     public static void main(String args[]) {
 
@@ -26,7 +31,8 @@ public class App {
     private void showMenu() {
         System.out.println("---------------------");
         System.out.println("What do you want to do?");
-        System.out.println("1. add FIRMA");
+        System.out.println("1. Adauga colet");
+        System.out.println("2. Adauga sofer");
         System.out.println("11. exit");
         System.out.print("Option:");
     }
@@ -56,10 +62,12 @@ public class App {
     private void execute(int option) {
         switch (option) {
             case 1:
-                readFirma();
-                //audit("added new firma");
+                readColet();
                 break;
             case 2:
+                readSoferi();
+                break;
+            case 3:
                 System.exit(0);
         }
     }
@@ -101,6 +109,47 @@ public class App {
     }
 
 */
+    void readColet(){
+        try{
+            System.out.print("Tip colet: ");
+            String tipColet = s.nextLine();
+            System.out.print("cantitateColet: ");
+            float cantitateColet = Float.parseFloat(s.nextLine());
 
+            coleteServices.addNewColete(tipColet,cantitateColet);
+        } catch (InvalidDataException invalidData) {
+            System.out.println(invalidData.getMessage());
+        } catch (NumberFormatException numberFormat) {
+            System.out.println("Invalid type or quantity!");
+        }
+    }
+    void readSoferi(){
+        try{
+            System.out.print("Nume: ");
+            String nume = s.nextLine();
+            System.out.print("Prenume: ");
+            String prenume = s.nextLine();
+            System.out.print("Nr de telefon: ");
+            String nrTelefon = s.nextLine();
+            System.out.print("Sofer id: ");
+            int idSofer = Integer.parseInt(s.nextLine());
+            System.out.println("Masina: ");
+            System.out.print("Nr inmatriculare: ");
+            String nrInmatriculare = s.nextLine();
+            System.out.print("Marca: ");
+            String marca = s.nextLine();
+            System.out.print("Culoare: ");
+            String culoare = s.nextLine();
+
+            Masina masina = new Masina(nrInmatriculare,marca,culoare);
+
+            soferServices.addNewSoferi(nume,prenume,nrTelefon,idSofer, masina);
+        } catch (InvalidDataException invalidData) {
+        System.out.println(invalidData.getMessage());
+        } catch (NumberFormatException numberFormat) {
+        System.out.println("Invalid!");
+    }
+    }
 }
+
 
