@@ -38,7 +38,9 @@ public class App {
         System.out.println("2. Adauga sofer");
         System.out.println("3. Adauga masina");
         System.out.println("4. Listare masini");
-        System.out.println("11. exit");
+        System.out.println("5. Listare colete");
+        System.out.println("6. Listare soferi");
+        System.out.println("7. exit");
         System.out.print("Option:");
     }
 
